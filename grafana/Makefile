@@ -1,7 +1,8 @@
 NS = sipbmon
 VERSION ?= latest
-REPO = nginx
-NAME = nginx
+REPO = grafana
+NAME = grafana
+INSTANCE = 0
 
 .PHONY: build restart rm run start stop
 
@@ -15,9 +16,8 @@ rm: stop
 
 run:
 	docker run -d --name $(NAME) \
-		--link grafana --link prometheus \
-		-v /etc/ssl/private:/etc/ssl/private \
-		-p 80:80 -p 443:443 -p 9090:9090 \
+		-v /var/lib/grafana:/var/lib/grafana \
+		-p 3000:3000 \
 		$(NS)/$(REPO)
 
 start:
