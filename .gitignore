@@ -1,0 +1,7 @@
+# Protects integrity of key material
+keys/
+
+# Vim
+*~
+*.un~
+*.swp
